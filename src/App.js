@@ -1,9 +1,17 @@
 import "./App.css";
-import { Weather } from "./Components/Weather";
 import { useState } from "react";
-
 import { config } from "./Config/config";
 import axios from "axios";
+import { Weather } from "./Components/Weather";
+import Header from "./Components/Header";
+import Speed from "./Components/Speed";
+import Altitude from "./Components/Altitude";
+import MotorTemp from "./Components/MotorTemp";
+import FlightDuration from "./Components/FlightDuration";
+import SpeedGraph from "./Components/SpeedGraph";
+import AltitudeGraph from "./Components/AltitudeGraph";
+import MotorGraph from "./Components/MotorGraph";
+import Map from "./Components/Map";
 
 function App() {
 	const [weather, setWeather] = useState(null);
@@ -17,15 +25,22 @@ function App() {
 	};
 
 	return (
-		<>
-			<div className="container">
-				<h1>Hi React</h1>
-				<button onClick={() => getWeather("imperial", "80138")}>
-					Get Weather
-				</button>
-			</div>
-			<Weather weather={weather} />
-		</>
+		<main className="app">
+			<Header />
+			<Speed />
+			<Altitude />
+			<MotorTemp />
+			<FlightDuration />
+			<SpeedGraph />
+			<AltitudeGraph />
+			<MotorGraph />
+			<Map />
+			<Weather
+				className="weather-component"
+				weather={weather}
+				getWeather={getWeather}
+			/>
+		</main>
 	);
 }
 
