@@ -1,9 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+:root {
+	--app_bg: hsla(0, 0%, 11%, 1);
+	--comp_bg: hsla(0, 0%, 15.5%, 1);
+	--border-radius: 7px;
+	--box-shadow: 5px 3px 5px 1px #181616;
+}
+
 *,
 *:before,
 *:after {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	text-align: center;
+	font-family: "Ubuntu", sans-serif;
+	color: #808080;
 }
 
 html,
@@ -13,16 +25,90 @@ body {
 	height: 100%;
 }
 
+h2 {
+	font-weight: 400;
+}
+
 .app {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(5, 1fr);
+	grid-template-columns: 10px repeat(4, auto) 10px;
+	grid-template-rows: 10px 35px 75px repeat(2, auto) 10px;
 	grid-template-areas:
-		"header header header header header"
-		"speed altitude temp duration"
-		"map map speedgraph altgraph"
-		"map map motortemp weather";
+		". . . . . . "
+		". header header header header ."
+		". speed altitude temp duration ."
+		". map map speedgraph altgraph ."
+		". map map motortemp weather ."
+		". . . . . . ";
 	width: 100vw;
 	height: 100vh;
-	background-color: coral;
+	background-color: var(--app_bg);
+	gap: 1.5rem;
+}
+
+.header-component {
+	grid-area: header;
+	background-color: var(--comp_bg);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+}
+
+.speed-component {
+	grid-area: speed;
+	background-color: var(--comp_bg);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+}
+
+.altitude-component {
+	grid-area: altitude;
+	border-radius: var(--border-radius);
+	background-color: var(--comp_bg);
+	box-shadow: var(--box-shadow);
+}
+
+.motor-temp-component {
+	grid-area: temp;
+	background-color: var(--comp_bg);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+}
+.flight-duration-component {
+	grid-area: duration;
+	background-color: var(--comp_bg);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+}
+.weather-component {
+	grid-area: weather;
+	background-color: var(--comp_bg);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+}
+
+.speed-graph-component {
+	grid-area: speedgraph;
+	background-color: var(--comp_bg);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+}
+
+.map-component {
+	grid-area: map;
+	background-color: var(--comp_bg);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+}
+.motor-graph-component {
+	grid-area: motortemp;
+	background-color: var(--comp_bg);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+}
+
+.alt-graph-comp {
+	grid-area: altgraph;
+	background-color: var(--comp_bg);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
 }
