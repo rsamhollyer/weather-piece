@@ -1,12 +1,9 @@
 import WeatherIcon from "./WeatherIcon";
 
 export const Weather = (props) => {
-	const { weather, getWeather } = props;
+	const { weather } = props;
 	return (
 		<div className="weather-component">
-			<button onClick={() => getWeather("imperial", "80138")}>
-				Get Weather
-			</button>
 			{weather ? (
 				<div>
 					<WeatherIcon main={weather.weather[0].main} />

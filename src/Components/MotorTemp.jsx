@@ -1,7 +1,16 @@
 const MotorTemp = () => {
 	return (
-		<div className="motor-temp-component">
-			<h2>Motor Temp. Comp.</h2>
+		<div className="motor-temp-component single-stat-panel">
+			<div className="text-area">
+				<h3 className="component-header">Motor Temperature</h3>
+				<h2 className="read-out-info">
+					200 <span>degs</span>
+				</h2>
+			</div>
+
+			<div className="icon-area">
+				<span className="component-icon fas fa-fire"></span>
+			</div>
 		</div>
 	);
 };
