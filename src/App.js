@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { config } from "./Config/config";
 import axios from "axios";
 import { Weather } from "./Components/Weather";
@@ -15,7 +15,6 @@ import Map from "./Components/Map";
 
 function App() {
 	const [weather, setWeather] = useState(null);
-	console.log(weather);
 
 	const getWeather = async (units, zipcode) => {
 		const resp = await axios.get(
@@ -23,6 +22,10 @@ function App() {
 		);
 		setWeather(resp.data);
 	};
+
+	useEffect(() => {
+		getWeather("imperial", "77532");
+	}, []);
 
 	return (
 		<main className="app">
@@ -35,11 +38,7 @@ function App() {
 			<AltitudeGraph />
 			<MotorGraph />
 			<Map />
-			<Weather
-				className="weather-component"
-				weather={weather}
-				getWeather={getWeather}
-			/>
+			<Weather className="weather-component" weather={weather} />
 		</main>
 	);
 }
