@@ -12,7 +12,6 @@ import SpeedGraph from "./Components/SpeedGraph";
 import AltitudeGraph from "./Components/AltitudeGraph";
 import MotorGraph from "./Components/MotorGraph";
 import Map from "./Components/Map";
-import ReactMapGL from "react-map-gl";
 
 function App() {
 	const [weather, setWeather] = useState(null);
@@ -20,12 +19,12 @@ function App() {
 		latitude: 29.910577,
 		longitude: -95.060882,
 		zoom: 10,
-		width: "100vw",
-		height: "100vh",
+		width: "100%",
+		height: "100%",
 	});
 	const getWeather = async (units, zipcode) => {
 		const resp = await axios.get(
-			`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&appid=${config.weatherKey}&units=${units}`
+			`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&appid=${process.env.REACT_APP_WEATHER_TOKEN}&units=${units}`
 		);
 		setWeather(resp.data);
 	};
@@ -44,7 +43,9 @@ function App() {
 			<SpeedGraph />
 			<AltitudeGraph />
 			<MotorGraph />
-			<Map viewport={viewport} />
+
+			<Map viewport={viewport} setViewport={setViewport} />
+
 			<Weather weather={weather} />
 		</main>
 	);
