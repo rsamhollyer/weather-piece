@@ -31,8 +31,8 @@ h2 h3 {
 
 .app {
 	display: grid;
-	grid-template-columns: 10px repeat(4, auto) 10px;
-	grid-template-rows: 10px 35px 58px repeat(2, 230px) 10px;
+	grid-template-columns: 10px repeat(4, 1fr) 10px;
+	grid-template-rows: 10px 35px 58px repeat(2, 1fr) 10px;
 	grid-template-areas:
 		". . . . . . "
 		". header header header header ."

@@ -1,6 +1,5 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { config } from "./Config/config";
 import axios from "axios";
 import { Weather } from "./Components/Weather";
 import Header from "./Components/Header";
@@ -12,7 +11,7 @@ import SpeedGraph from "./Components/SpeedGraph";
 import AltitudeGraph from "./Components/AltitudeGraph";
 import MotorGraph from "./Components/MotorGraph";
 import Map from "./Components/Map";
-
+import { config } from "./Config/config";
 function App() {
 	const [weather, setWeather] = useState(null);
 	const [viewport, setViewport] = useState({
@@ -24,7 +23,7 @@ function App() {
 	});
 	const getWeather = async (units, zipcode) => {
 		const resp = await axios.get(
-			`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&appid=${process.env.REACT_APP_WEATHER_TOKEN}&units=${units}`
+			`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&appid=${config.weatherKey}&units=${units}`
 		);
 		setWeather(resp.data);
 	};
