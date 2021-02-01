@@ -1,5 +1,5 @@
 import WeatherIcon from "./WeatherIcon";
-
+import Precipitation from "./Precipitation";
 export const Weather = (props) => {
 	const { weather } = props;
 	return (
@@ -7,26 +7,47 @@ export const Weather = (props) => {
 			{weather && (
 				<div className="weather-body">
 					<div className="weather-name">
-						<h2>{weather.name}</h2>
+						<h2 className="city-name">{weather.name}</h2>
 					</div>
 
 					<div className="weather-info">
-						<WeatherIcon main={weather.weather[0].main} />
-						<div className="current-infor">
-							<h3>Current Weather is : {weather.weather[0].main} </h3>
-							<h3>Current Temperature is : {weather.main.temp}</h3>
+						<div className="weather-icon">
+							<WeatherIcon main={weather.weather[0].main} />
+						</div>
+						<div className="current-info">
+							<h4>{weather.weather[0].main} </h4>
+							<h2> {weather.main.temp} °F</h2>
+							<div className="temp-extremes">
+								<h3>Low: {weather.main.temp_min}</h3>
+								<h3>High: {weather.main.temp_max}</h3>
+							</div>
 						</div>
 					</div>
-
-					<h3>Today's Min: {weather.main.temp_min}</h3>
-					<h3>Today's Max : {weather.main.temp_max}</h3>
-					<h3>Wind : {weather.wind.speed}</h3>
-					<h3>Wind Direction : {weather.wind.deg}°</h3>
-					{weather.wind.gust ? (
-						<h3>Wind Gusts :{weather.wind.gust}</h3>
-					) : (
-						<h3>Wind Gusts : No Data</h3>
-					)}
+					<div className="other-weather">
+						<div className="small-weather-panel">
+							<i className="fas fa-wind"></i>
+							<h3>{weather.wind.speed} mph</h3>
+							<h3>Direction: {weather.wind.deg}°</h3>
+							{weather.wind.gust ? (
+								<h4>Gusts:{weather.wind.gust}</h4>
+							) : (
+								<h4>Gusts: No Data</h4>
+							)}
+							<h4>Wind</h4>
+						</div>
+						<div className="small-weather-panel">
+							<i className="fas fa-eye"></i>
+							<h3>
+								{(parseFloat(weather.visibility) / 1000).toLocaleString()} km
+							</h3>
+							<h4>Visibility</h4>
+						</div>
+						<div className="small-weather-panel">
+							<i className="fas fa-tint"></i>
+							<Precipitation weather={weather} />
+							<h4>Precipitation</h4>
+						</div>
+					</div>
 				</div>
 			)}
 		</div>
