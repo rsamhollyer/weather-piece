@@ -1,7 +1,8 @@
-const Map = () => {
+const Map = (props) => {
+	const { viewport } = props;
 	return (
 		<div className="map-component">
-			<h2>Map Comp</h2>
+			<ReactMapGL {...viewport}></ReactMapGL>
 		</div>
 	);
 };
