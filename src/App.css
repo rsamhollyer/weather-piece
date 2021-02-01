@@ -51,6 +51,24 @@ h2 h3 {
 	background-color: var(--comp_bg);
 	border-radius: var(--border-radius);
 	box-shadow: var(--box-shadow);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 15px;
+}
+
+.date-time {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1rem;
+}
+.date {
+	padding: 0 5px;
+}
+
+.time {
+	padding-left: 10px;
 }
 
 .speed-component {
