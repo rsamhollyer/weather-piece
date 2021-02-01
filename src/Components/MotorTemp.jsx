@@ -4,7 +4,7 @@ const MotorTemp = () => {
 			<div className="text-area">
 				<h3 className="component-header">Motor Temperature</h3>
 				<h2 className="read-out-info">
-					200 <span>degs</span>
+					200 <span>°F</span>
 				</h2>
 			</div>
 
