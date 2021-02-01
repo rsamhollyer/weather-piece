@@ -12,7 +12,7 @@ import SpeedGraph from "./Components/SpeedGraph";
 import AltitudeGraph from "./Components/AltitudeGraph";
 import MotorGraph from "./Components/MotorGraph";
 import Map from "./Components/Map";
-
+import Moment from "react-moment";
 function App() {
 	const [weather, setWeather] = useState(null);
 
