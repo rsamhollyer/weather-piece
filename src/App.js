@@ -38,7 +38,7 @@ function App() {
 			<AltitudeGraph />
 			<MotorGraph />
 			<Map />
-			<Weather className="weather-component" weather={weather} />
+			<Weather weather={weather} />
 		</main>
 	);
 }
