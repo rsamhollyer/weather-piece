@@ -4,7 +4,7 @@ const Precipitation = (props) => {
 	const snow = weather.snow?.["1h"];
 
 	const precip = rain || snow || 0;
-	console.log(precip);
+
 	return <h3>{precip} mm</h3>;
 };
 

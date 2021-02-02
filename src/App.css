@@ -19,8 +19,8 @@
 
 html,
 body {
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
 	font-family: "Ubuntu", sans-serif;
 	font-size: 62.5%;
 }
@@ -40,7 +40,8 @@ h2 h3 {
 		". map map speedgraph altgraph ."
 		". map map motortemp weather ."
 		". . . . . . ";
-	width: 100vw;
+
+	width: 100%;
 	height: 100vh;
 	background-color: var(--app_bg);
 	gap: 1.5rem;
@@ -163,17 +164,28 @@ h2 h3 {
 }
 
 .weather-icon {
-	font-size: 4rem;
+	font-size: 3.5rem;
+}
+
+.current-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .current-info h2 {
-	font-size: 2rem;
+	font-size: 1.7rem;
 	font-weight: normal;
 }
 
 .temp-extremes {
 	display: flex;
 	justify-content: space-between;
+}
+
+.temp-extremes h4 {
+	padding: 5px;
 }
 
 .other-weather {
@@ -205,6 +217,9 @@ h2 h3 {
 	background-color: var(--comp_bg);
 	border-radius: var(--border-radius);
 	box-shadow: var(--box-shadow);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .motor-graph-component {
 	grid-area: motortemp;

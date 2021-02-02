@@ -18,8 +18,8 @@ function App() {
 		latitude: 29.910577,
 		longitude: -95.060882,
 		zoom: 10,
-		width: "100%",
-		height: "100%",
+		width: "90%",
+		height: "90%",
 	});
 	const getWeather = async (units, zipcode) => {
 		const resp = await axios.get(

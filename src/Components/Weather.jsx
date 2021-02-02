@@ -16,10 +16,23 @@ export const Weather = (props) => {
 						</div>
 						<div className="current-info">
 							<h4>{weather.weather[0].main} </h4>
-							<h2> {weather.main.temp} °F</h2>
+							<h2>
+								{" "}
+								{Math.round(parseFloat(weather.main.temp)).toLocaleString()} °F
+							</h2>
 							<div className="temp-extremes">
-								<h3>Low: {weather.main.temp_min}</h3>
-								<h3>High: {weather.main.temp_max}</h3>
+								<h4>
+									Low:{" "}
+									{Math.round(
+										parseFloat(weather.main.temp_min)
+									).toLocaleString()}
+								</h4>
+								<h4>
+									High:{" "}
+									{Math.round(
+										parseFloat(weather.main.temp_max)
+									).toLocaleString()}
+								</h4>
 							</div>
 						</div>
 					</div>

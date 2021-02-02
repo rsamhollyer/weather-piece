@@ -20,7 +20,7 @@ export default function WeatherIcon(props) {
 					Ash: <i className="fas fa-smog"></i>,
 					Squall: <i className="fas fa-wind"></i>,
 					Tornado: <i className="fas fa-exclamation"></i>,
-					Clear: <i className="fas fa-sun"></i>,
+					Clear: <i className="fas fa-sun" style={{ color: "#fffb00" }}></i>,
 					Clouds: <i className="fas fa-cloud"></i>,
 				}[main]
 			}
