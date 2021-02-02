@@ -12,6 +12,7 @@ import AltitudeGraph from "./Components/AltitudeGraph";
 import MotorGraph from "./Components/MotorGraph";
 import Map from "./Components/Map";
 import { config } from "./Config/config";
+
 function App() {
 	const [weather, setWeather] = useState(null);
 	const [viewport, setViewport] = useState({
@@ -21,6 +22,9 @@ function App() {
 		width: "90%",
 		height: "90%",
 	});
+
+	const [data, setData] = useState([]);
+
 	const getWeather = async (units, zipcode) => {
 		const resp = await axios.get(
 			`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&appid=${config.weatherKey}&units=${units}`
@@ -28,9 +32,17 @@ function App() {
 		setWeather(resp.data);
 	};
 
+	const getData = async () => {
+		const res = await axios.get("data/2013_04_14_merlischachen.kml.json");
+		setData(res.data);
+	};
+
 	useEffect(() => {
 		getWeather("imperial", "94203");
+		getData();
 	}, []);
+
+	console.log(data);
 
 	return (
 		<main className="app">
