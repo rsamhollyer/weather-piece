@@ -29,7 +29,7 @@ function App() {
 	};
 
 	useEffect(() => {
-		getWeather("imperial", "77532");
+		getWeather("imperial", "94203");
 	}, []);
 
 	return (
