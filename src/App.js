@@ -39,10 +39,7 @@ function App() {
 
 	useEffect(() => {
 		getWeather("imperial", "94203");
-		getData();
 	}, []);
-
-	console.log(data);
 
 	return (
 		<main className="app">
