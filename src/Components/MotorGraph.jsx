@@ -17,6 +17,7 @@ const MotorGraph = () => {
 						{ x: 4, y: 4 },
 						{ x: 5, y: 7 },
 					]}
+					scale={{ x: "time", y: "linear" }}
 				/>
 			</VictoryChart>
 		</div>
