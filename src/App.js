@@ -19,7 +19,7 @@ function App() {
 	const [viewport, setViewport] = useState({
 		latitude: 29.910577,
 		longitude: -95.060882,
-		zoom: 10,
+		zoom: 11,
 		width: "90%",
 		height: "90%",
 	});
@@ -28,9 +28,9 @@ function App() {
 	let dataLength = data.length;
 	let current = data[index];
 
-	const getWeather = async (units, zipcode) => {
+	const getWeather = async (units, lat, lon) => {
 		const resp = await axios.get(
-			`https://api.openweathermap.org/data/2.5/weather?zip=${zipcode}&appid=${config.weatherKey}&units=${units}`
+			`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${config.weatherKey}&units=${units}`
 		);
 		setWeather(resp.data);
 	};
@@ -50,7 +50,7 @@ function App() {
 			>
 				Click Me
 			</button>
-			<Header getWeather={getWeather} getData={getData} />
+			<Header getWeather={getWeather} getData={getData} data={data} />
 			<Speed data={current} />
 			<Altitude data={current} />
 			<MotorTemp data={current} />
