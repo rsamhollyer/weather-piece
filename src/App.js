@@ -14,19 +14,8 @@ import Map from "./Components/Map";
 import { config } from "./Config/config";
 
 function App() {
-	useEffect(() => {
-		getWeather("imperial", "77532");
-		getData();
-		setDataLength(data.length);
-	}, []);
-
 	const [weather, setWeather] = useState(null);
 	const [data, setData] = useState([]);
-	const [index, setIndex] = useState(0);
-	const [dataLength, setDataLength] = useState(0);
-
-	let currentData = data[index] || {};
-
 	const [viewport, setViewport] = useState({
 		latitude: 29.910577,
 		longitude: -95.060882,
@@ -34,6 +23,10 @@ function App() {
 		width: "90%",
 		height: "90%",
 	});
+
+	const [index, setIndex] = useState(0);
+	let dataLength = data.length;
+	let current = data[index];
 
 	const getWeather = async (units, zipcode) => {
 		const resp = await axios.get(
@@ -47,31 +40,25 @@ function App() {
 		setData(resp.data);
 	};
 
-	console.log(`DATA ${data}`);
-	console.log(`INDEX ${index}`);
-	console.log(`LENGTH ${dataLength}`);
-
 	return (
 		<main className="app">
-			<Header />
-			<Speed data={currentData} />
-			<Altitude />
-			<MotorTemp />
-			<FlightDuration />
+			<button
+				style={{ fontSize: "3rem" }}
+				onClick={() => {
+					index < dataLength - 1 ? setIndex(index + 1) : setIndex(0);
+				}}
+			>
+				Click Me
+			</button>
+			<Header getWeather={getWeather} getData={getData} />
+			<Speed data={current} />
+			<Altitude data={current} />
+			<MotorTemp data={current} />
+			<FlightDuration data={current} />
 			<SpeedGraph />
 			<AltitudeGraph />
 			<MotorGraph />
-			<button
-				style={{ fontSize: "3rem" }}
-				onClick={(e) => {
-					e.preventDefault();
-					return index < dataLength - 1 ? setIndex(index + 1) : setIndex(0);
-				}}
-			>
-				CLICK ME
-			</button>
 			<Map viewport={viewport} setViewport={setViewport} />
-
 			<Weather weather={weather} />
 		</main>
 	);
