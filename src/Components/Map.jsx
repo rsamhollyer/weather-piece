@@ -3,6 +3,13 @@ import { config } from "../Config/config";
 import { useState, useEffect } from "react";
 const Map = (props) => {
 	const { data } = props;
+	const [viewport, setViewport] = useState({
+		latitude: 29.910577,
+		longitude: -95.060882,
+		zoom: 11,
+		width: "90%",
+		height: "90%",
+	});
 	useEffect(() => {
 		if (data[0]) {
 			setViewport({
@@ -12,14 +19,6 @@ const Map = (props) => {
 			});
 		}
 	}, [data]);
-
-	const [viewport, setViewport] = useState({
-		latitude: 29.910577,
-		longitude: -95.060882,
-		zoom: 11,
-		width: "90%",
-		height: "90%",
-	});
 
 	return (
 		<div className="map-component">
