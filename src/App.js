@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { Weather } from "./Components/Weather";
 import Header from "./Components/Header";
@@ -16,13 +16,6 @@ import { config } from "./Config/config";
 function App() {
 	const [weather, setWeather] = useState(null);
 	const [data, setData] = useState([]);
-	const [viewport, setViewport] = useState({
-		latitude: 29.910577,
-		longitude: -95.060882,
-		zoom: 11,
-		width: "90%",
-		height: "90%",
-	});
 
 	const [index, setIndex] = useState(0);
 	let dataLength = data.length;
@@ -51,14 +44,14 @@ function App() {
 				Click Me
 			</button>
 			<Header getWeather={getWeather} getData={getData} data={data} />
-			<Speed data={current} />
-			<Altitude data={current} />
-			<MotorTemp data={current} />
-			<FlightDuration data={current} />
+			<Speed current={current} />
+			<Altitude current={current} />
+			<MotorTemp current={current} />
+			<FlightDuration current={current} />
 			<SpeedGraph />
 			<AltitudeGraph />
 			<MotorGraph />
-			<Map viewport={viewport} setViewport={setViewport} />
+			<Map data={data} />
 			<Weather weather={weather} />
 		</main>
 	);
