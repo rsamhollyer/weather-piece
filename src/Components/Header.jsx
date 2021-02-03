@@ -2,7 +2,7 @@ import Moment from "react-moment";
 import { useEffect } from "react";
 const Header = (props) => {
 	const { getWeather, getData, data } = props;
-	console.log(data);
+
 	useEffect(() => {
 		if (data[0]) {
 			getWeather("imperial", data[0].lat, data[0].long);

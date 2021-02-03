@@ -1,11 +1,11 @@
 const MotorTemp = (props) => {
-	const { data } = props;
+	const { current } = props;
 	return (
 		<div className="motor-temp-component single-stat-panel">
 			<div className="text-area">
 				<h3 className="component-header">Motor Temperature</h3>
 				<h2 className="read-out-info">
-					{data ? data.temp.toFixed(2) : 0} <span>°F</span>
+					{current ? current.temp.toFixed(2) : 0} <span>°F</span>
 				</h2>
 			</div>
 

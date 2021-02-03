@@ -1,11 +1,11 @@
 const FlightDuration = (props) => {
-	const { data } = props;
+	const { current } = props;
 	return (
 		<div className="flight-duration-component single-stat-panel">
 			<div className="text-area">
 				<h3 className="component-header">Flight Duration</h3>
 				<h2 className="read-out-info">
-					{data ? data.time : 0} <span>seconds</span>
+					{current ? current.time : 0} <span>seconds</span>
 				</h2>
 			</div>
 

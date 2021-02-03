@@ -1,12 +1,12 @@
 const Speed = (props) => {
-	const { data } = props;
+	const { current } = props;
 
 	return (
 		<div className="speed-component single-stat-panel">
 			<div className="text-area">
 				<h3 className="component-header">Speed</h3>
 				<h2 className="read-out-info">
-					{data ? data.speed.toFixed(4) : 0}
+					{current ? current.speed.toFixed(4) : 0}
 					<span>FT/S</span>
 				</h2>
 			</div>
