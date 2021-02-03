@@ -6,7 +6,6 @@ const Map = (props) => {
 	return (
 		<div className="map-component">
 			<ReactMapGL
-				mapStyle="mapbox://styles/rsamhollyer/ckkn1mivy5aml17mnueua6ovj"
 				mapboxApiAccessToken={config.mapBox}
 				{...viewport}
 				onViewportChange={(nextViewport) => {
