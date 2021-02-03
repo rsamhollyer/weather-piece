@@ -16,11 +16,10 @@ import { config } from "./Config/config";
 function App() {
 	const [weather, setWeather] = useState(null);
 	const [data, setData] = useState([]);
-
+	const [chartData, setChartData] = useState([]);
 	const [index, setIndex] = useState(0);
 	let dataLength = data.length;
 	let current = data[index];
-
 	const getWeather = async (units, lat, lon) => {
 		const resp = await axios.get(
 			`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${config.weatherKey}&units=${units}`
@@ -38,7 +37,12 @@ function App() {
 			<button
 				style={{ fontSize: "3rem" }}
 				onClick={() => {
-					index < dataLength - 1 ? setIndex(index + 1) : setIndex(0);
+					if (index < dataLength - 1) {
+						setIndex(index + 1);
+						setChartData([...chartData, data[index]]);
+					} else {
+						setIndex(0);
+					}
 				}}
 			>
 				Click Me
@@ -48,7 +52,7 @@ function App() {
 			<Altitude current={current} />
 			<MotorTemp current={current} />
 			<FlightDuration current={current} />
-			<SpeedGraph />
+			<SpeedGraph chartData={chartData} />
 			<AltitudeGraph />
 			<MotorGraph />
 			<Map data={data} />
