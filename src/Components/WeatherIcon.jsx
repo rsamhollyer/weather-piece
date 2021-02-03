@@ -87,7 +87,7 @@ export default function WeatherIcon(props) {
 					),
 					Clear: (
 						<i
-							style={{ color: "#hsla(61, 100%, 47%, 1)" }}
+							style={{ color: "hsla(61, 100%, 47%, 1)" }}
 							className="fas fa-sun"
 						></i>
 					),
