@@ -2,7 +2,7 @@ import ReactMapGL, { Marker } from "react-map-gl";
 import { config } from "../Config/config";
 import { useState, useEffect } from "react";
 const Map = (props) => {
-	const { data } = props;
+	const { data, mapPoints } = props;
 	const [viewport, setViewport] = useState({
 		latitude: 29.910577,
 		longitude: -95.060882,
@@ -30,11 +30,20 @@ const Map = (props) => {
 					setViewport(nextViewport);
 				}}
 			>
-				<Marker latitude={29.910577} longitude={-95.060882}>
-					<button className="marker-btn">
-						<img src={"/black-drone.svg"} alt={"Drone Icon"} />
-					</button>
-				</Marker>
+				{mapPoints.lat ? (
+					<Marker latitude={mapPoints.lat} longitude={mapPoints.long}>
+						<button key={mapPoints.key} className="marker-btn">
+							<img src={"/black-drone.svg"} alt={"Drone Icon"} />
+						</button>
+					</Marker>
+				) : (
+					<Marker latitude={29.910577} longitude={-95.060882}>
+						{" "}
+						<button key={1} className="marker-btn">
+							<img src={"/black-drone.svg"} alt={"Drone Icon"} />
+						</button>
+					</Marker>
+				)}
 			</ReactMapGL>
 		</div>
 	);

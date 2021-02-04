@@ -22,6 +22,8 @@ function App() {
 		{ x: 0, y: 0 },
 	]);
 	const [index, setIndex] = useState(0);
+	const [mapPoints, setMapPoints] = useState({});
+
 	let dataLength = data.length;
 	let current = data[index];
 	const getWeather = async (units, lat, lon) => {
@@ -64,6 +66,11 @@ function App() {
 								y: data[index].temp,
 							},
 						]);
+						setMapPoints({
+							lat: data[index].lat,
+							long: data[index].long,
+							key: data[index.time],
+						});
 					} else {
 						setIndex(0);
 					}
@@ -79,7 +86,7 @@ function App() {
 			<SpeedGraph chartData={speedChartData} />
 			<AltitudeGraph chartData={altChartData} />
 			<MotorGraph chartData={motorTempChartData} />
-			<Map data={data} />
+			<Map data={data} mapPoints={mapPoints} />
 			<Weather weather={weather} />
 		</main>
 	);
