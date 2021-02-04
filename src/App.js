@@ -27,6 +27,7 @@ function App() {
 
 	let dataLength = data.length;
 	let current = data[index];
+
 	const getWeather = async (units, lat, lon) => {
 		const resp = await axios.get(
 			`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${config.weatherKey}&units=${units}`
@@ -34,8 +35,32 @@ function App() {
 		setWeather(resp.data);
 	};
 
-	const getData = async () => {
-		const resp = await axios.get("data/2013_04_14_merlischachen.kml.json");
+	const getData = async (drone) => {
+		let url;
+		switch (drone) {
+			case 1:
+				url = "data/2013_04_14_merlischachen.kml.json";
+				break;
+
+			case 2:
+				url = "data/2014_08_21_rtk_vrs_2.5cm_fact2.5.kml.json";
+				break;
+
+			case 3:
+				url = "data/aletsch_27_10_vrs_ppk.kml.json";
+				break;
+
+			case 4:
+				url = "data/corridor_orient.kml.json";
+				break;
+
+			case 5:
+				url = "data/EP-00-00012_0119.kml.json";
+				break;
+			default:
+				return;
+		}
+		const resp = await axios.get(url);
 		setData(resp.data);
 	};
 
@@ -44,43 +69,76 @@ function App() {
 			<button
 				style={{ fontSize: "3rem" }}
 				onClick={() => {
-					if (index < dataLength - 1) {
-						setIndex(index + 1);
-						setSpeedChartData([
-							...speedChartData,
-							{
-								x: data[index].time,
-								y: data[index].speed,
-							},
-						]);
-						setAltChartData([
-							...altChartData,
-							{
-								x: data[index].time,
-								y: data[index].alt,
-							},
-						]);
-						setMotorTempChartData([
-							...motorTempChartData,
-							{
-								x: data[index].time,
-								y: data[index].temp,
-							},
-						]);
-						setMapPoints({
-							lat: data[index].lat,
-							long: data[index].long,
-							key: data[index].time,
-						});
-					} else {
-						setIndex(0);
-					}
+					setInterval(() => {
+						if (index < dataLength - 1) {
+							setIndex(index + 1);
+							setSpeedChartData([
+								...speedChartData,
+								{
+									x: data[index].time,
+									y: data[index].speed,
+								},
+							]);
+							setAltChartData([
+								...altChartData,
+								{
+									x: data[index].time,
+									y: data[index].alt,
+								},
+							]);
+							setMotorTempChartData([
+								...motorTempChartData,
+								{
+									x: data[index].time,
+									y: data[index].temp,
+								},
+							]);
+							setMapPoints({
+								lat: data[index].lat,
+								long: data[index].long,
+								key: data[index].time,
+							});
+						} else {
+							setIndex(0);
+						}
+					}, 200);
+					// if (index < dataLength - 1) {
+					// 	setIndex(index + 1);
+					// 	setSpeedChartData([
+					// 		...speedChartData,
+					// 		{
+					// 			x: data[index].time,
+					// 			y: data[index].speed,
+					// 		},
+					// 	]);
+					// 	setAltChartData([
+					// 		...altChartData,
+					// 		{
+					// 			x: data[index].time,
+					// 			y: data[index].alt,
+					// 		},
+					// 	]);
+					// 	setMotorTempChartData([
+					// 		...motorTempChartData,
+					// 		{
+					// 			x: data[index].time,
+					// 			y: data[index].temp,
+					// 		},
+					// 	]);
+					// 	setMapPoints({
+					// 		lat: data[index].lat,
+					// 		long: data[index].long,
+					// 		key: data[index].time,
+					// 	});
+					// } else {
+					// 	setIndex(0);
+					// }
 				}}
 			>
 				Click Me
 			</button>
-			<Header getWeather={getWeather} getData={getData} data={data} />
-			<FlightPicker />
+			<Header getWeather={getWeather} data={data} />
+			<FlightPicker getData={getData} />
 			<Speed current={current} />
 			<Altitude current={current} />
 			<MotorTemp current={current} />
