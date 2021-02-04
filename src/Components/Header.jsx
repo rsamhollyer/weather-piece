@@ -1,7 +1,7 @@
 import Moment from "react-moment";
 import { useEffect } from "react";
 const Header = (props) => {
-	const { getWeather, getData, data } = props;
+	const { getWeather, data } = props;
 
 	useEffect(() => {
 		if (data[0]) {
@@ -11,13 +11,7 @@ const Header = (props) => {
 	return (
 		<div className="header-component">
 			<h1>Drone Flight Recorder</h1>
-			<button
-				onClick={() => {
-					getData();
-				}}
-			>
-				Get Flight
-			</button>
+
 			<div className="date-time">
 				<Moment className="date" format="DD/MM/YYYY" />
 				<Moment className="time" format="HH:mm" />
