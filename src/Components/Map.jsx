@@ -1,4 +1,4 @@
-import ReactMapGL from "react-map-gl";
+import ReactMapGL, { Marker } from "react-map-gl";
 import { config } from "../Config/config";
 import { useState, useEffect } from "react";
 const Map = (props) => {

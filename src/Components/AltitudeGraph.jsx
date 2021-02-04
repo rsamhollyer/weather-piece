@@ -1,6 +1,7 @@
 import { VictoryChart, VictoryLine, VictoryTheme } from "victory";
 
-const AltitudeGraph = () => {
+const AltitudeGraph = (props) => {
+	const { chartData } = props;
 	return (
 		<div className="alt-graph-comp">
 			<h2>Alt. Graph</h2>
@@ -10,14 +11,8 @@ const AltitudeGraph = () => {
 						data: { stroke: "#c43a31" },
 						parent: { border: "1px solid #ccc" },
 					}}
-					data={[
-						{ x: 0, y: 0 },
-						{ x: 2, y: 3 },
-						{ x: 3, y: 5 },
-						{ x: 4, y: 4 },
-						{ x: 5, y: 7 },
-					]}
-					scale={{ x: "time", y: "linear" }}
+					data={chartData}
+					scale={{ x: "linear", y: "linear" }}
 				/>
 			</VictoryChart>
 		</div>

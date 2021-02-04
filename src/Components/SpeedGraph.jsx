@@ -1,5 +1,4 @@
 import { VictoryChart, VictoryLine, VictoryTheme } from "victory";
-import { useState, useEffect } from "react";
 
 const SpeedGraph = (props) => {
 	const { chartData } = props;
@@ -11,11 +10,11 @@ const SpeedGraph = (props) => {
 			<VictoryChart theme={VictoryTheme.material}>
 				<VictoryLine
 					style={{
-						data: { stroke: "#c43a31" },
+						data: { stroke: "#c43a31", fontWeight: "bold" },
 						parent: { border: "1px solid #ccc" },
 					}}
 					data={chartData}
-					scale={{ x: "time", y: "linear" }}
+					scale={{ x: "linear", y: "linear" }}
 				/>
 			</VictoryChart>
 		</div>

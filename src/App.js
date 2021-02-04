@@ -17,6 +17,10 @@ function App() {
 	const [weather, setWeather] = useState(null);
 	const [data, setData] = useState([]);
 	const [speedChartData, setSpeedChartData] = useState([{ x: 0, y: 0 }]);
+	const [altChartData, setAltChartData] = useState([{ x: 0, y: 0 }]);
+	const [motorTempChartData, setMotorTempChartData] = useState([
+		{ x: 0, y: 0 },
+	]);
 	const [index, setIndex] = useState(0);
 	let dataLength = data.length;
 	let current = data[index];
@@ -46,6 +50,20 @@ function App() {
 								y: data[index].speed,
 							},
 						]);
+						setAltChartData([
+							...altChartData,
+							{
+								x: data[index].time,
+								y: data[index].alt,
+							},
+						]);
+						setMotorTempChartData([
+							...motorTempChartData,
+							{
+								x: data[index].time,
+								y: data[index].temp,
+							},
+						]);
 					} else {
 						setIndex(0);
 					}
@@ -59,8 +77,8 @@ function App() {
 			<MotorTemp current={current} />
 			<FlightDuration current={current} />
 			<SpeedGraph chartData={speedChartData} />
-			<AltitudeGraph />
-			<MotorGraph />
+			<AltitudeGraph chartData={altChartData} />
+			<MotorGraph chartData={motorTempChartData} />
 			<Map data={data} />
 			<Weather weather={weather} />
 		</main>
