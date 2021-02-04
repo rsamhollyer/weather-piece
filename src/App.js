@@ -67,11 +67,8 @@ function App() {
 	};
 
 	useEffect(() => {
-		console.log(`INSIDE USEEFFECT`);
 		const interval = setInterval(() => {
-			console.log(`INSIDE INTERVAL`);
 			if (index < dataLength - 1) {
-				console.log(`INSIDE IF`);
 				setIndex(index + 1);
 				setSpeedChartData([
 					...speedChartData,
@@ -101,7 +98,6 @@ function App() {
 				});
 			} else {
 				setIndex(0);
-				console.log(`INSIDE ELSE`);
 			}
 		}, 250);
 		return () => {
