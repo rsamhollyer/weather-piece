@@ -5,6 +5,7 @@ const Speed = (props) => {
 
 	const [state, setState] = useState(0);
 	let color;
+	let background;
 
 	useEffect(() => {
 		if (current) {
@@ -14,10 +15,13 @@ const Speed = (props) => {
 
 	if (state < 0.5) {
 		color = "good";
+		background = "good-background";
 	} else if (state < 0.8) {
 		color = "caution";
+		background = "caution-background";
 	} else {
 		color = "danger";
+		background = "danger-background";
 	}
 	return (
 		<div className="speed-component single-stat-panel">
@@ -29,10 +33,8 @@ const Speed = (props) => {
 				</h2>
 			</div>
 
-			<div className="icon-area">
-				<span
-					className={`component-icon ${color}fas fa-tachometer-alt `}
-				></span>
+			<div className={`icon-area ${background}`}>
+				<span className="component-icon fas fa-tachometer-alt"></span>
 			</div>
 		</div>
 	);

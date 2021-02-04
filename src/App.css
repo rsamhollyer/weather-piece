@@ -112,13 +112,24 @@ h2 h3 {
 .good {
 	color: var(--good_color) !important;
 }
+
+.good-background {
+	background-color: var(--good_color) !important;
+}
+
 .caution {
 	color: var(--caution_color) !important;
+}
+
+.caution-background {
+	background-color: var(--caution_color) !important;
 }
 .danger {
 	color: var(--danger_color) !important;
 }
-
+.danger-background {
+	background-color: var(--danger_color);
+}
 .icon-area {
 	display: flex;
 	align-items: center;
@@ -127,6 +138,7 @@ h2 h3 {
 }
 .component-icon {
 	font-size: 1.8rem;
+	color: white !important;
 }
 
 .altitude-component {
