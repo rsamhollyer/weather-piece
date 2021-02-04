@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 const Altitude = (props) => {
 	const { current } = props;
 	return (

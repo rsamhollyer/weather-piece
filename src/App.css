@@ -6,6 +6,9 @@
 	--border-radius: 7px;
 	--box-shadow: 5px 3px 5px 1px #181616;
 	--icon-background: hsla(0, 0%, 20%, 1);
+	--good_color: hsla(95, 100%, 32%, 1);
+	--caution_color: hsla(60, 100%, 32%, 1);
+	--danger_color: hsla(0, 100%, 47%, 1);
 }
 
 *,
@@ -105,6 +108,17 @@ h2 h3 {
 	margin-bottom: 10px;
 	font-size: 1.9rem;
 }
+
+.good {
+	color: var(--good_color) !important;
+}
+.caution {
+	color: var(--caution_color) !important;
+}
+.danger {
+	color: var(--danger_color) !important;
+}
+
 .icon-area {
 	display: flex;
 	align-items: center;

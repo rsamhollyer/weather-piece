@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 const MotorTemp = (props) => {
 	const { current } = props;
 	return (
