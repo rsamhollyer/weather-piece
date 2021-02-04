@@ -21,7 +21,7 @@ const Map = (props) => {
 		}
 	}, [data]);
 
-	console.log(mapPoints);
+	// console.log(mapPoints);
 	return (
 		<div className="map-component">
 			<ReactMapGL

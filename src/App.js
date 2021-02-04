@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Weather } from "./Components/Weather";
 import Header from "./Components/Header";
@@ -24,6 +24,8 @@ function App() {
 	]);
 	const [index, setIndex] = useState(0);
 	const [mapPoints, setMapPoints] = useState({});
+
+	const [isFlying, setFlying] = useState(false);
 
 	let dataLength = data.length;
 	let current = data[index];
@@ -64,44 +66,55 @@ function App() {
 		setData(resp.data);
 	};
 
+	useEffect(() => {
+		console.log(`INSIDE USEEFFECT`);
+		const interval = setInterval(() => {
+			console.log(`INSIDE INTERVAL`);
+			if (index < dataLength - 1) {
+				console.log(`INSIDE IF`);
+				setIndex(index + 1);
+				setSpeedChartData([
+					...speedChartData,
+					{
+						x: data[index].time,
+						y: data[index].speed,
+					},
+				]);
+				setAltChartData([
+					...altChartData,
+					{
+						x: data[index].time,
+						y: data[index].alt,
+					},
+				]);
+				setMotorTempChartData([
+					...motorTempChartData,
+					{
+						x: data[index].time,
+						y: data[index].temp,
+					},
+				]);
+				setMapPoints({
+					lat: data[index].lat,
+					long: data[index].long,
+					key: data[index].time,
+				});
+			} else {
+				setIndex(0);
+				console.log(`INSIDE ELSE`);
+			}
+		}, 250);
+		return () => {
+			clearInterval(interval);
+		};
+	}, [index, data]);
+
 	return (
 		<main className="app">
 			<button
 				style={{ fontSize: "3rem" }}
 				onClick={() => {
-					setInterval(() => {
-						if (index < dataLength - 1) {
-							setIndex(index + 1);
-							setSpeedChartData([
-								...speedChartData,
-								{
-									x: data[index].time,
-									y: data[index].speed,
-								},
-							]);
-							setAltChartData([
-								...altChartData,
-								{
-									x: data[index].time,
-									y: data[index].alt,
-								},
-							]);
-							setMotorTempChartData([
-								...motorTempChartData,
-								{
-									x: data[index].time,
-									y: data[index].temp,
-								},
-							]);
-							setMapPoints({
-								lat: data[index].lat,
-								long: data[index].long,
-								key: data[index].time,
-							});
-						} else {
-							setIndex(0);
-						}
-					}, 200);
+					setFlying(true);
 					// if (index < dataLength - 1) {
 					// 	setIndex(index + 1);
 					// 	setSpeedChartData([
