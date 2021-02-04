@@ -29,7 +29,13 @@ const Map = (props) => {
 				onViewportChange={(nextViewport) => {
 					setViewport(nextViewport);
 				}}
-			></ReactMapGL>
+			>
+				<Marker latitude={29.910577} longitude={-95.060882}>
+					<button className="marker-btn">
+						<img src={"/black-drone.svg"} alt={"Drone Icon"} />
+					</button>
+				</Marker>
+			</ReactMapGL>
 		</div>
 	);
 };

@@ -221,6 +221,17 @@ h2 h3 {
 	align-items: center;
 	justify-content: center;
 }
+
+.marker-btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+.marker-btn img {
+	width: 20px;
+	height: 20px;
+}
+
 .motor-graph-component {
 	grid-area: motortemp;
 	background-color: var(--comp_bg);
