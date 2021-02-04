@@ -35,10 +35,11 @@ h2 h3 {
 .app {
 	display: grid;
 	grid-template-columns: 10px repeat(4, 1fr) 10px;
-	grid-template-rows: 10px 35px 58px repeat(2, 1fr) 10px;
+	grid-template-rows: 10px 35px 35px 58px repeat(2, 1fr) 10px;
 	grid-template-areas:
 		". . . . . . "
 		". header header header header ."
+		". picker picker picker picker ."
 		". speed altitude temp duration ."
 		". map map speedgraph altgraph ."
 		". map map motortemp weather ."
@@ -52,6 +53,16 @@ h2 h3 {
 
 .header-component {
 	grid-area: header;
+	background-color: var(--comp_bg);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 15px;
+}
+.picker-component {
+	grid-area: picker;
 	background-color: var(--comp_bg);
 	border-radius: var(--border-radius);
 	box-shadow: var(--box-shadow);
@@ -128,7 +139,7 @@ h2 h3 {
 	color: var(--danger_color) !important;
 }
 .danger-background {
-	background-color: var(--danger_color);
+	background-color: var(--danger_color) !important;
 }
 .icon-area {
 	display: flex;

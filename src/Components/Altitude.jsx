@@ -12,15 +12,15 @@ const Altitude = (props) => {
 		}
 	}, [current]);
 
-	if (state < 0.5) {
-		color = "good";
-		background = "good-background";
-	} else if (state < 0.8) {
+	if (state < 50) {
+		color = "danger";
+		background = "danger-background";
+	} else if (state < 250) {
 		color = "caution";
 		background = "caution-background";
 	} else {
-		color = "danger";
-		background = "danger-background";
+		color = "good";
+		background = "good-background";
 	}
 
 	return (

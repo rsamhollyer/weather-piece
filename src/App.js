@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Weather } from "./Components/Weather";
 import Header from "./Components/Header";
+import FlightPicker from "./Components/FlightPicker";
 import Speed from "./Components/Speed";
 import Altitude from "./Components/Altitude";
 import MotorTemp from "./Components/MotorTemp";
@@ -69,7 +70,7 @@ function App() {
 						setMapPoints({
 							lat: data[index].lat,
 							long: data[index].long,
-							key: data[index.time],
+							key: data[index].time,
 						});
 					} else {
 						setIndex(0);
@@ -79,6 +80,7 @@ function App() {
 				Click Me
 			</button>
 			<Header getWeather={getWeather} getData={getData} data={data} />
+			<FlightPicker />
 			<Speed current={current} />
 			<Altitude current={current} />
 			<MotorTemp current={current} />

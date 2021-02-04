@@ -12,10 +12,10 @@ const MotorTemp = (props) => {
 		}
 	}, [current]);
 
-	if (state < 0.5) {
+	if (state < 135) {
 		color = "good";
 		background = "good-background";
-	} else if (state < 0.8) {
+	} else if (state < 0.15) {
 		color = "caution";
 		background = "caution-background";
 	} else {
