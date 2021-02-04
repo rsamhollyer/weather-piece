@@ -16,7 +16,7 @@ import { config } from "./Config/config";
 function App() {
 	const [weather, setWeather] = useState(null);
 	const [data, setData] = useState([]);
-	const [chartData, setChartData] = useState([]);
+	const [speedChartData, setSpeedChartData] = useState([{ x: 0, y: 0 }]);
 	const [index, setIndex] = useState(0);
 	let dataLength = data.length;
 	let current = data[index];
@@ -39,7 +39,13 @@ function App() {
 				onClick={() => {
 					if (index < dataLength - 1) {
 						setIndex(index + 1);
-						setChartData([...chartData, data[index]]);
+						setSpeedChartData([
+							...speedChartData,
+							{
+								x: data[index].time,
+								y: data[index].speed,
+							},
+						]);
 					} else {
 						setIndex(0);
 					}
@@ -52,7 +58,7 @@ function App() {
 			<Altitude current={current} />
 			<MotorTemp current={current} />
 			<FlightDuration current={current} />
-			<SpeedGraph chartData={chartData} />
+			<SpeedGraph chartData={speedChartData} />
 			<AltitudeGraph />
 			<MotorGraph />
 			<Map data={data} />
